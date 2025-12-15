@@ -65,11 +65,11 @@ fn u64_max() -> u64 {
 }
 
 fn is_f32_max(value: &f32) -> bool {
-    *value == f32::MAX
+    (f32::MAX - (*value).abs()) == 0.0
 }
 
 fn is_f32_min(value: &f32) -> bool {
-    *value == f32::MIN
+    ((*value).abs() - f32::MIN.abs()) == 0.0
 }
 
 #[cfg(feature = "deserialize")]
@@ -83,11 +83,11 @@ fn f32_max() -> f32 {
 }
 
 fn is_f64_max(value: &f64) -> bool {
-    *value == f64::MAX
+    (f64::MAX - (*value).abs()) == 0.0
 }
 
 fn is_f64_min(value: &f64) -> bool {
-    *value == f64::MIN
+    ((*value).abs() - f64::MIN.abs()) == 0.0
 }
 
 #[cfg(feature = "deserialize")]

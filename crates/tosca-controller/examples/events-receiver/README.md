@@ -5,7 +5,7 @@
 A receiver for events produced by `tosca` devices. It scans the network for
 `tosca` devices and subscribes to their brokers to receive these events.
 
-This example illustrates how to build a terminal program that leverages
+This example demonstrates how to build a terminal program using
 the `tosca-controller` APIs to manage events.
 
 ## Usage

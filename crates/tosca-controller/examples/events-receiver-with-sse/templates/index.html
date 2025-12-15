@@ -85,18 +85,13 @@
         }
 
         /* Media Queries for Responsiveness */
-        @media (max-width: 1200px) {
-            .device-console {
-                width: 280px;
-                height: 250px;
-            }
-
-            h1 {
-                font-size: 1.4em;
-            }
-        }
-
         @media (max-width: 768px) {
+            #devices-container {
+                flex-direction: column; /* Stack consoles vertically */
+                gap: 10px;
+                align-items: center;    /* Center the devices horizontally */
+            }
+
             .device-console {
                 width: 90%; /* Full width on smaller screens */
                 max-width: 320px; /* Prevent overly wide consoles */
@@ -111,14 +106,15 @@
             h1 {
                 font-size: 1.2em;
             }
-
-            #devices-container {
-                flex-direction: column; /* Stack consoles vertically */
-                gap: 10px;
-            }
         }
 
         @media (max-width: 480px) {
+            #devices-container {
+                flex-direction: column; /* Stack consoles vertically */
+                gap: 10px;
+                align-items: center;    /* Center the devices horizontally */
+            }
+
             .device-console {
                 width: 100%;
                 max-width: 300px;

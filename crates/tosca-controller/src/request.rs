@@ -239,13 +239,21 @@ impl Request {
 
         let client = reqwest::Client::new();
 
-        let response = match self.kind {
-            RestKind::Get => client.get(request).send(),
-            RestKind::Post => client.post(request).json(&parameters).send(),
-            RestKind::Put => client.put(request).json(&parameters).send(),
-            RestKind::Delete => client.delete(request).json(&parameters).send(),
-        }
-        .await?;
+        let request_builder = match self.kind {
+            RestKind::Get => client.get(request),
+            RestKind::Post => client.post(request),
+            RestKind::Put => client.put(request),
+            RestKind::Delete => client.delete(request),
+        };
+
+        let request_builder = if self.kind != RestKind::Get && !parameters.is_empty() {
+            request_builder.json(&parameters)
+        } else {
+            request_builder
+        };
+
+        // Close the connection after issuing a request.
+        let response = request_builder.header("Connection", "close").send().await?;
 
         // TODO: Analyze the response status.
         // A 404 status (route not found) might be returned when a

@@ -1,10 +1,23 @@
+<div align="center">
+
 # `tosca`
 
 [![Actions][actions badge]][actions]
 [![Codecov][codecov badge]][codecov]
 [![LICENSE][license badge]][license]
 
-`tosca` is an IoT framework that aims to be flexible and customizable.
+</div>
+
+> [!CAUTION]
+> The `tosca` framework is in a very early, experimental stage of development.
+> The APIs are still unstable and subject to change.
+> Be aware that even a minor version may introduce API breakages.
+> A major version will be released only when the APIs remain stable and
+unchanged for an extended period.
+> This approach aims to provide clearer and more precise APIs, shaped by user
+feedback and suggestions during the initial stages of the project
+
+`tosca` is an IoT framework thought to be secure, flexible and customizable.
 
 On one hand, it provides a set of APIs to build firmware for microcontrollers
 with various hardware architectures, while on the other hand, it offers APIs
@@ -91,13 +104,20 @@ This may take several minutes, depending on the tests defined in each crate.
 If only the tests for a specific crate need to be run, navigate to the
 corresponding crate subdirectory and execute the `cargo test` command.
 
-## APIs Stability
+## License
 
-The APIs are still unstable and subject to change. Be aware that even a minor
-version may introduce API breakages. A major version will be released only
-when the APIs remain stable and unchanged for an extended period.
-This approach aims to provide clearer and more precise APIs, shaped by user
-feedback and suggestions during the initial stages of the project.
+Licensed under
+
+- [MIT License](LICENSE-MIT)
+
+## Contribution
+
+Contributions are welcome via pull request.
+The [Rust Code of Conduct](https://www.rust-lang.org/policies/code-of-conduct) 
+applies.
+
+Unless explicitly stated otherwise, all contributions will be licensed under
+the project defined license, without any additional terms or conditions.
 
 <!-- Links -->
 [actions]: https://github.com/ToscaLabs/tosca/actions

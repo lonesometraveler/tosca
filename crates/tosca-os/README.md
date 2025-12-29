@@ -1,6 +1,8 @@
+<div align="center">
 # `tosca-os`
 
 [![LICENSE][license badge]][license]
+</div>
 
 This library crate provides a series of APIs to build a server which
 represents the firmware of an IoT device running on an operating system.

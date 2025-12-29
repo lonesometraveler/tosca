@@ -13,7 +13,7 @@ exclude = ["crates/tosca-esp32c3"]
 [workspace.package]
 version = "0.1.0"
 authors = ["Michele Valsesia <michele.valsesia@toscalabs.org>"]
-description = "A secure IoT framework."
+description = "A versatile, customizable, and secure IoT framework."
 edition = "2024"
 license = "Apache-2.0 OR MIT"
 repository = "https://github.com/ToscaLabs/tosca"

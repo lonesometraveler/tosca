@@ -2,7 +2,7 @@
 name = "light"
 version = "0.1.0"
 edition = "2024"
-authors = ["Michele Valsesia <luni-4@hotmail.it>"]
+authors = ["Michele Valsesia <michele.valsesia@toscalabs.org>"]
 description = "A light implemented with the tosca-os crate."
 license = "Apache-2.0 OR MIT"
 publish = false

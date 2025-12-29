@@ -1,7 +1,6 @@
 [package]
 name = "light-with-events"
 version = "0.1.0"
-rust-version = "1.89"
 edition = "2024"
 authors = ["Michele Valsesia <michele.valsesia@toscalabs.org>"]
 description = """

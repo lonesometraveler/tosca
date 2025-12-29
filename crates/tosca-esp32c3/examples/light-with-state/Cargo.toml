@@ -1,7 +1,6 @@
 [package]
 name = "light-with-state"
 version = "0.1.0"
-rust-version = "1.89"
 edition = "2024"
 authors = ["Michele Valsesia <michele.valsesia@toscalabs.org>"]
 description = "A simple stateful light for an ESP32-C3 board."

@@ -15,7 +15,7 @@
 > A major version will be released only when the APIs remain stable and
 unchanged for an extended period.
 > This approach aims to provide clearer and more precise APIs, shaped by user
-feedback and suggestions during the initial stages of the project
+feedback and suggestions during the initial stages of the project.
 
 `tosca` is an IoT framework thought to be secure, flexible and customizable.
 

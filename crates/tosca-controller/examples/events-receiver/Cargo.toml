@@ -2,7 +2,7 @@
 name = "events-receiver"
 version = "0.1.0"
 edition = "2024"
-authors = ["Michele Valsesia <luni-4@hotmail.it>"]
+authors = ["Michele Valsesia <michele.valsesia@toscalabs.org>"]
 description = """
 A receiver for events produced by `tosca` devices. It scans the network for
 `tosca` devices and subscribes to their brokers to receive these events.

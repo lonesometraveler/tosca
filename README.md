@@ -108,7 +108,7 @@ corresponding crate subdirectory and execute the `cargo test` command.
 
 Licensed under
 
-- [MIT License](LICENSE)
+- [MIT License](LICENSE-MIT)
 
 ## Contribution
 
@@ -122,7 +122,7 @@ the project defined license, without any additional terms or conditions.
 <!-- Links -->
 [actions]: https://github.com/ToscaLabs/tosca/actions
 [codecov]: https://codecov.io/gh/ToscaLabs/tosca
-[license]: https://github.com/ToscaLabs/tosca/blob/master/LICENSE
+[license]: https://github.com/ToscaLabs/tosca/blob/master/LICENSE-MIT
 [`embedded-hal`]: https://crates.io/crates/embedded-hal
 [`embedded-hal-async`]: https://crates.io/crates/embedded-hal-async
 

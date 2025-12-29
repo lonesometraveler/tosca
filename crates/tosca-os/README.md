@@ -68,7 +68,7 @@ Since `scp` is deprecated, and the version on a PC might use SFTP by default,
 the `-O` flag reverts to the deprecated protocol.
 
 <!-- Links -->
-[license]: https://github.com/ToscaLabs/tosca/blob/master/LICENSE
+[license]: https://github.com/ToscaLabs/tosca/blob/master/LICENSE-MIT
 
 <!-- Badges -->
 [license badge]: https://img.shields.io/badge/license-MIT-blue.svg

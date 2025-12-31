@@ -78,7 +78,6 @@ serde_json.features = ["alloc"]
 
 # Static cell
 static_cell.version = "2.1.1"
-static_cell.features = ["nightly"]
 
 [package.metadata.docs.rs]
 rustdoc-args = ["--cfg", "docsrs"]

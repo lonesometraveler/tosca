@@ -48,7 +48,6 @@ log.version = "0.4.28"
 
 # Static cell
 static_cell.version = "2.1.1"
-static_cell.features = ["nightly"]
 
 # Toml dependency
 toml-cfg.version = "0.2.0"

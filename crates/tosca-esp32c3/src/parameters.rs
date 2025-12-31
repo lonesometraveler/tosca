@@ -350,7 +350,7 @@ impl ParametersPayloads {
         })
     }
 
-    /// Retrieves the [`CharactersSequencePayload`] associated with
+    /// Retrieves the [`CharsSequencePayload`] associated with
     /// the given parameter name.
     ///
     /// # Errors

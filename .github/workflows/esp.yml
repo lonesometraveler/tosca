@@ -13,6 +13,8 @@ on:
       - 'crates/tosca-esp32c3/**/*.sh'
       - 'crates/tosca-esp32c3/**/*.yml'
       - 'crates/tosca-esp32c3/**/*.toml'
+    tags:
+      - 'v*.*.*' # Run when a new version is being published
   pull_request:
     branches: [master]
     types: [opened, synchronize]

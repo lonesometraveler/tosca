@@ -42,8 +42,8 @@ impl RequestSender<'_> {
             .await
     }
 
-    /// Sends a request to a device with the given [`Parameters`], getting in
-    /// return a [`Response`].
+    /// Sends a request to a device with the given [`ParametersValues`],
+    /// getting in return a [`Response`].
     ///
     /// # Errors
     ///

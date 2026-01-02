@@ -9,8 +9,8 @@ pub enum ErrorKind {
     Discovery,
     /// Errors encountered when sending requests to a device.
     Request,
-    /// Errors caused by a wrong parameter.
-    WrongParameter,
+    /// Errors caused by an invalid parameter.
+    InvalidParameter,
     /// Errors encountered while parsing a `json` response.
     JsonResponse,
     /// Errors encountered while parsing a byte stream response.
@@ -26,7 +26,7 @@ impl ErrorKind {
         match self {
             Self::Discovery => "Discovery",
             Self::Request => "Request",
-            Self::WrongParameter => "Wrong Parameter",
+            Self::InvalidParameter => "Invalid Parameter",
             Self::JsonResponse => "Json Response",
             Self::StreamResponse => "Stream Response",
             Self::Sender => "Response Sender",

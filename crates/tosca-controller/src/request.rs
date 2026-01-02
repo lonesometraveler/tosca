@@ -57,7 +57,7 @@ fn compare_values_with_params_data(
 
 fn parameter_error(message: String) -> Error {
     error!(message);
-    Error::new(ErrorKind::WrongParameter, message)
+    Error::new(ErrorKind::InvalidParameter, message)
 }
 
 #[derive(Debug, PartialEq)]

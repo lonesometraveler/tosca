@@ -14,6 +14,7 @@ pub enum ErrorKind {
     /// Errors encountered while parsing a `json` response.
     JsonResponse,
     /// Errors encountered while parsing a byte stream response.
+    #[cfg(feature = "stream")]
     StreamResponse,
     /// Errors encountered while constructing the request sender.
     Sender,
@@ -28,6 +29,7 @@ impl ErrorKind {
             Self::Request => "Request",
             Self::InvalidParameter => "Invalid Parameter",
             Self::JsonResponse => "Json Response",
+            #[cfg(feature = "stream")]
             Self::StreamResponse => "Stream Response",
             Self::Sender => "Response Sender",
             Self::Events => "Events",

@@ -3,11 +3,11 @@ use std::borrow::Cow;
 /// All possible error kinds.
 #[derive(Debug, Copy, Clone)]
 pub enum ErrorKind {
-    /// Service error.
+    /// Errors encountered while configuring the discovery service.
     Service,
-    /// Not found address error.
+    /// Not found address.
     NotFoundAddress,
-    /// Serialize/Deserialize error.
+    /// Errors encountered while serializing or deserializing a file.
     Serialization,
 }
 

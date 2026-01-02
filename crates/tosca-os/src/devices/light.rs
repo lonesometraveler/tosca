@@ -20,7 +20,9 @@ const ALLOWED_HAZARDS: &[Hazard] = &[
 
 /// A `light` device.
 ///
-/// The default main route for a `light` device is **/light**.
+/// Its methods guide in the definition of a correct light.
+///
+/// The default main route is **/light**.
 pub struct Light<const M1: bool, const M2: bool, S = ()>
 where
     S: Clone + Send + Sync + 'static,
@@ -64,9 +66,9 @@ where
         }
     }
 
-    /// Turns on a light.
+    /// Turns on the light.
     ///
-    /// **This method must be called, or a compilation error will occur.**
+    /// **Calling this method is required, or a compilation error will occur.**
     pub fn turn_light_on(
         self,
         route: LightOnRoute,
@@ -86,9 +88,9 @@ impl<S> Light<true, false, S>
 where
     S: Clone + Send + Sync + 'static,
 {
-    /// Turns off a light.
+    /// Turns off the light.
     ///
-    /// **This method must be called, or a compilation error will occur.**
+    /// **Calling this method is required, or a compilation error will occur.**
     pub fn turn_light_off(
         self,
         route: LightOffRoute,
@@ -108,7 +110,7 @@ impl<S> Light<true, true, S>
 where
     S: Clone + Send + Sync + 'static,
 {
-    /// Changes the main route.
+    /// Sets the main route.
     #[must_use]
     #[inline]
     pub fn main_route(mut self, main_route: &'static str) -> Self {
@@ -120,8 +122,8 @@ where
     ///
     /// # Errors
     ///
-    /// Returns an error if any route hazards are not allowed
-    /// for the [`Light`] device.
+    /// Returns an error if the route contains hazards not allowed for
+    /// [`Light`].
     pub fn route(mut self, light_route: impl FnOnce(S) -> BaseResponse) -> Result<Self> {
         let base_response = light_route(self.device.state.clone());
 
@@ -145,6 +147,8 @@ where
     }
 
     /// Builds a [`Device`].
+    ///
+    /// **This method consumes the light.**
     pub fn build(self) -> Device<S> {
         self.device.mandatory_response_data([
             Self::check_allowed_hazards(self.turn_light_on.base_response),

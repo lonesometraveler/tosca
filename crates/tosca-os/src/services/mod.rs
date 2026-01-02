@@ -17,12 +17,12 @@ const DOMAIN: &str = "tosca";
 // It defines the default top-level domain for a service.
 const TOP_LEVEL_DOMAIN: &str = "local";
 
-/// Service transport protocol.
+/// The discovery service transport protocol.
 #[derive(Debug, Clone, Copy)]
 pub enum TransportProtocol {
-    /// TCP service.
+    /// TCP-based service.
     TCP,
-    /// UDP service.
+    /// UDP-based service.
     UDP,
 }
 
@@ -43,7 +43,7 @@ impl TransportProtocol {
     }
 }
 
-/// A service configurator.
+/// A discovery service configuration.
 #[derive(Debug)]
 pub struct ServiceConfig<'a> {
     // Instance name.
@@ -67,7 +67,7 @@ pub struct ServiceConfig<'a> {
 }
 
 impl<'a> ServiceConfig<'a> {
-    /// Creates a [`ServiceConfig`] for a `mDNS-SD` service.
+    /// Creates [`ServiceConfig`] for an `mDNS-SD` discovery service.
     #[must_use]
     pub fn mdns_sd(instance_name: &'a str) -> Self {
         Self {
@@ -83,14 +83,19 @@ impl<'a> ServiceConfig<'a> {
         }
     }
 
-    /// Sets a service property.
+    /// Sets a discovery service property.
+    ///
+    /// For example, a property might be the server scheme.
+    /// i.e. ("scheme", "http")
     #[must_use]
     pub fn property(mut self, property: (impl Into<String>, impl Into<String>)) -> Self {
         self.properties.insert(property.0.into(), property.1.into());
         self
     }
 
-    /// Sets the service host name.
+    /// Sets the service hostname.
+    ///
+    /// An example might be `tosca`.
     #[must_use]
     pub const fn hostname(mut self, hostname: &'a str) -> Self {
         self.hostname = hostname;
@@ -105,6 +110,9 @@ impl<'a> ServiceConfig<'a> {
     }
 
     /// Sets the service domain.
+    ///
+    ///
+    /// The domain searched by the client service. i.e. tosca
     #[must_use]
     pub const fn domain(mut self, domain: &'a str) -> Self {
         self.domain = domain;
@@ -112,20 +120,22 @@ impl<'a> ServiceConfig<'a> {
     }
 
     /// Sets the service top-level domain.
+    ///
+    /// A common top-level domain is `.local`.
     #[must_use]
     pub const fn top_level_domain(mut self, top_level_domain: &'a str) -> Self {
         self.top_level_domain = top_level_domain;
         self
     }
 
-    /// Disables `IPv6` interfaces.
+    /// Excludes devices with `IPv6` interfaces from the discovery service.
     #[must_use]
     pub const fn disable_ipv6(mut self) -> Self {
         self.disable_ipv6 = true;
         self
     }
 
-    /// Disables the given IP address.
+    /// Excludes the device with the given `IP` from the discovery service.
     #[must_use]
     #[inline]
     pub fn disable_ip(mut self, ip: impl Into<IpAddr>) -> Self {
@@ -133,7 +143,7 @@ impl<'a> ServiceConfig<'a> {
         self
     }
 
-    /// Disables the given network interface.
+    /// Disables the given network interface from the discovery service.
     #[must_use]
     pub const fn disable_network_interface(mut self, network_interface: &'a str) -> Self {
         self.disable_network_interface = Some(network_interface);

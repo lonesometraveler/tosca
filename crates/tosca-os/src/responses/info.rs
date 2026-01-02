@@ -16,7 +16,7 @@ use serde::Serialize;
 use super::{BaseResponse, error::ErrorResponse};
 
 /// A response which transmits a JSON message over the network containing
-/// energy and economy data for a device.
+/// a device energy and economy information.
 #[derive(Serialize)]
 pub struct InfoResponse(ToscaInfoResponse);
 

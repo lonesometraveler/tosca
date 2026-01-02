@@ -11,7 +11,9 @@ use crate::responses::BaseResponse;
 // Default main route.
 const MAIN_ROUTE: &str = "/device";
 
-/// A general `device`.
+/// A generic `tosca` device.
+///
+/// A [`Device`] can only be passed to a [`Server`].
 #[derive(Debug)]
 pub struct Device<S = ()>
 where
@@ -50,14 +52,14 @@ impl<S> Device<S>
 where
     S: Clone + Send + Sync + 'static,
 {
-    /// Creates a [`Device`] with a state.
+    /// Creates a [`Device`] with the given state.
     #[must_use]
     #[inline]
     pub fn with_state(state: S) -> Self {
         Self::init(DeviceKind::Unknown, state)
     }
 
-    /// Changes the main route.
+    /// Sets the main route.
     #[must_use]
     pub const fn main_route(mut self, main_route: &'static str) -> Self {
         self.main_route = main_route;

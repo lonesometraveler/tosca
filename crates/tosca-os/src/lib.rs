@@ -1,59 +1,59 @@
-//! A crate library for building Tosca devices firmware running on
-//! operating systems.
+//! `tosca-os` is  a library for building firmware for `tosca` devices running
+//! on operating systems.
 //!
-//! This crate has been conceived for those devices which require a great amount
-//! of resources for their execution, in terms of computing times, memory size,
-//! and connected components.
+//! This crate targets firmware that requires more resources in terms of
+//! computing time, memory capacity, and interaction with external components
+//! than typical embedded devices.
 //!
-//! As of now, only devices for `x86_64` and `ARM` hardware architectures have
-//! been tested.
+//! Currently, only devices targeting `x86_64` and `ARM` architectures
+//! are supported and covered by automated tests.
 //!
-//! All devices firmware are modelled on real use cases. Each device is
-//! composed of a description and a set of operations with their own
-//! hazards associated.
+//! Device firmware consists of a description and a set of tasks, both exposed
+//! through a client-server architecture in which the firmware operates as the
+//! server and its controller as the client.
 //!
-//! A description is defined as a sequence of fields, such as
-//! the device name, kind, and other information to set a secure
-//! communication channel.
+//! A device description is defined as a sequence of fields, such as the
+//! device name, the device kind, and other data used to establish a
+//! connection with the related controller.
 //!
-//! When a controller makes a `REST` request to a server invoking a specific
-//! route, one or more associated operations are performed on the device.
+//! When a controller makes a request to the firmware through a specified device
+//! route, the firmware executes the corresponding task and sends a response
+//! back to the controller. Routes may also accept parameters to configure
+//! tasks.
 //!
-//! Each route may have zero or more associated hazards.
-//! If a route has no hazards, it could still pose unknown risks to the device.
-//! In such cases, it is the responsibility of the controller to evaluate
-//! whether the request should be blocked based on the potential hazards for the
-//! device.
+//! Each route may have zero or more associated hazards, indicating potential
+//! risks for the task. Even when no hazards are declared, a route may still
+//! pose unknown risks to the device.
+//! In such cases, the controller must decide whether to allow or block the
+//! request based on its privacy policy rules.
 //!
-//! This crate cannot determine the outcome of device operations at compile
-//! time, as they are dependant on the runtime environment. As such, hazards are
-//! informational only, aiding the controller in deciding about whether to allow
-//! or block a request based on privacy policies.
+//! This crate **cannot** determine the outcome of device tasks at compile
+//! time, as they depend heavily on the runtime environment. Consequently,
+//! hazards are purely informational and help the controller decide whether to
+//! allow or block requests in accordance with privacy policies.
 //!
-//! An `std` environment is mandatory to make a full usage of the provided
-//! functionalities.
+//! An `std` environment is required to obtain full crate functionality.
 
 #![deny(unsafe_code)]
 #![deny(missing_docs)]
 
-/// All device kinds implementable in a firmware.
+/// All supported device types.
 pub mod devices;
 
-/// Methods for defining a device and its associated operations.
+/// General device definition along with its methods.
 pub mod device;
-/// Error handling.
+/// Error management.
 pub mod error;
-/// All responses kinds and their payloads.
+/// All responses kinds along with their payloads.
 pub mod responses;
-/// Methods to define and run the server which represents the firmware.
+/// The firmware server.
 pub mod server;
-/// Methods to define and run the discovery service necessary to detect a
-/// device in a network.
+/// The discovery service used to make the firmware detectable on the network.
 pub mod service {
     pub use super::services::{ServiceConfig, TransportProtocol};
 }
 
-/// Methods to parse requests and construct responses.
+/// Utilities for parsing request parameters and constructing responses.
 pub mod extract {
     pub use axum::extract::{FromRef, Json, Path, State};
     pub use axum::http::header;

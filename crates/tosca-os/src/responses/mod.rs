@@ -1,14 +1,14 @@
 /// A response providing details about an error encountered during a
 /// device operation.
 pub mod error;
-/// A response containing energy and economy data for a device.
+/// A response containing a device energy and economy information.
 pub mod info;
-/// A response notifying the controller that
-/// an operation completed successfully.
+/// A response notifying the controller that an operation completed
+/// successfully.
 pub mod ok;
 /// A response containing the data produced during a device operation.
 pub mod serial;
-/// Response to handle a stream of data as a sequence of bytes.
+/// A response containing a byte stream of data.
 #[cfg(feature = "stream")]
 pub mod stream;
 
@@ -59,7 +59,7 @@ fn build_get_route(route: &str, parameters: &Parameters) -> String {
 #[derive(Debug)]
 /// A base response for a [`crate::device::Device`].
 ///
-/// Any response is converted into a base response.
+/// All responses are converted into this base response.
 pub struct BaseResponse {
     // Router.
     pub(crate) router: Router,
@@ -146,8 +146,8 @@ impl BaseResponse {
 
 /// A mandatory [`BaseResponse`].
 ///
-/// This structure serves as a wrapper for a [`BaseResponse`], signaling
-/// that it is mandatory.
+/// This structure acts as a wrapper for a [`BaseResponse`], making it
+/// mandatory.
 pub struct MandatoryResponse<const SET: bool> {
     pub(crate) base_response: BaseResponse,
 }

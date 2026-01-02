@@ -47,7 +47,7 @@ where
     device: Device<S>,
 }
 
-/// A [`Device`] server.
+/// A server running indefinitely on the firmware.
 #[derive(Debug)]
 pub struct Server<'a, S = ()>
 where
@@ -60,7 +60,7 @@ impl<'a, S> Server<'a, S>
 where
     S: Clone + Send + Sync + 'static,
 {
-    /// Creates a [`Server`].
+    /// Creates a [`Server`] from the given [`Device`].
     pub const fn new(device: Device<S>) -> Self {
         Self {
             data: ServerData {
@@ -74,35 +74,35 @@ where
         }
     }
 
-    /// Sets server IPv4 address.
+    /// Sets the server `IPv4` address.
     #[must_use]
     pub const fn address(mut self, http_address: Ipv4Addr) -> Self {
         self.data.http_address = http_address;
         self
     }
 
-    /// Sets server port.
+    /// Sets the server port.
     #[must_use]
     pub const fn port(mut self, port: u16) -> Self {
         self.data.port = port;
         self
     }
 
-    /// Sets server scheme.
+    /// Sets the server scheme. i.e. `http`
     #[must_use]
     pub const fn scheme(mut self, scheme: &'a str) -> Self {
         self.data.scheme = scheme;
         self
     }
 
-    /// Sets the service name which will compose the well-known URI.
+    /// Sets the service name used to compose the well-known `URI`.
     #[must_use]
     pub fn well_known_service(mut self, service_name: &'a str) -> Self {
         self.data.well_known_service = service_name;
         self
     }
 
-    /// Sets a discovery service.
+    /// Sets the configuration for the discovery service.
     #[must_use]
     #[inline]
     pub fn discovery_service(mut self, service_config: ServiceConfig<'a>) -> Self {
@@ -110,8 +110,10 @@ where
         self
     }
 
-    /// Enables a server with a graceful shutdown operation being performed
-    /// by the [`Future`] passed as input.
+    /// Transforms the server into a [`GracefulShutdownServer`].
+    ///
+    /// The [`Future`] passed as input manages the graceful shutdown of
+    /// the server.
     #[must_use]
     #[inline]
     pub fn with_graceful_shutdown<F>(self, signal: F) -> GracefulShutdownServer<'a, S, F>
@@ -124,11 +126,11 @@ where
         }
     }
 
-    /// Runs a [`Device`] on the server.
+    /// Runs the server.
     ///
     /// # Errors
     ///
-    /// It returns an error whether a server fails to start.
+    /// Returns an error if the server fails to start.
     pub async fn run(self) -> Result<()> {
         self.with_graceful_shutdown(std::future::pending())
             .run()
@@ -136,7 +138,10 @@ where
     }
 }
 
-/// Run a server for [`Device`] with graceful shutdown enabled.
+/// A server with graceful shutdown.
+///
+/// Aside from the graceful shutdown functionality, it behaves the same as
+/// [`Server`].
 #[derive(Debug)]
 pub struct GracefulShutdownServer<'a, S, F>
 where
@@ -153,11 +158,11 @@ where
     S: Clone + Send + Sync + 'static,
     F: Future<Output = ()> + Send + 'static,
 {
-    /// Runs a [`Device`] on the server with a graceful shutdown enabled.
+    /// Runs the server with graceful shutdown.
     ///
     /// # Errors
     ///
-    /// It returns an error whenever a server fails to start.
+    /// Returns an error if the server fails to start.
     pub async fn run(self) -> Result<()> {
         // Create listener bind.
         let listener_bind = format!("{}:{}", self.data.http_address, self.data.port);

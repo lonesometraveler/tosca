@@ -48,7 +48,7 @@ impl StreamResponse {
         Self(Body::from_stream(stream).into_response())
     }
 
-    /// Creates a [`StreamResponse`] from headers and
+    /// Creates a [`StreamResponse`] from the given headers and
     /// an asynchronous byte reader.
     #[inline]
     pub fn from_headers_reader<const N: usize, R>(

@@ -6,9 +6,9 @@ authors.workspace = true
 description = "A library for building a controller that manages all Tosca devices across a network."
 keywords = ["iot", "iot-library", "controller", "devices", "device-events", "data"]
 documentation = "https://docs.rs/tosca-controller"
-readme.workspace = true
+readme = "README.md"
 license.workspace = true
-repository.workspace = true
+repository = "https://github.com/ToscaLabs/tosca/tree/master/crates/tosca-controller"
 rust-version.workspace = true
 
 [features]

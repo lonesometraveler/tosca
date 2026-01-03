@@ -38,7 +38,7 @@ where
     P: InputPin + Wait,
     D: DelayNs,
 {
-    /// Creates an [`Am312`] driver with the given input pin.
+    /// Creates an [`Am312`] driver for the given input pin.
     #[must_use]
     #[inline]
     pub fn new(pin: P, delay: D) -> Self {
@@ -49,8 +49,8 @@ where
     ///
     /// # Errors
     ///
-    /// Returns an error if the underlying pin fails while waiting for
-    /// or reading the input state.
+    /// Returns an error if the underlying pin fails during the wait or
+    /// or while reading the input state.
     pub async fn wait_for_motion_start(&mut self) -> Result<(), P::Error> {
         loop {
             self.pin.wait_for_rising_edge().await?;

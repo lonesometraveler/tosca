@@ -9,6 +9,7 @@
 //! It performs temperature conversions internally and exposes the result
 //! through its scratchpad memory, which includes a CRC to ensure data
 //! integrity.
+//!
 //! The driver operates in *single-sensor mode* using the `Skip ROM` command to
 //! address the device directly without needing its unique 64-bit ROM code,
 //! making it ideal for setups where **only one** `DS18B20` is connected

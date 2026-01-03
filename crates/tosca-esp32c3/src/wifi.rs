@@ -17,7 +17,7 @@ pub(crate) const WIFI_RECONNECT_DELAY: u64 = 2;
 
 /// The `Wi-Fi` controller.
 ///
-/// Configures and establishes a conncection to a `Wi-Fi` access point.
+/// Configures and establishes a connection to a `Wi-Fi` access point.
 pub struct Wifi {
     _esp_radio_controller: &'static Controller<'static>,
     controller: WifiController<'static>,

@@ -23,5 +23,5 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Find spells in repo
+      - name: Find typos in the repository
         uses: crate-ci/typos@v1.41.0

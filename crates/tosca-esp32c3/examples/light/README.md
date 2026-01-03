@@ -41,9 +41,9 @@ cargo run --release
 ```
 
 > [!IMPORTANT]
-> Always use the release profile [--release] when building esp-hal crate.
+> Always use the release profile `[--release]` when building esp-hal crate.
   The dev profile can potentially be one or more orders of magnitude
-  slower than release profile, and may cause issues with timing-senstive
+  slower than release profile, and may cause issues with timing-sensitive
   peripherals and/or devices.
 
 ## Board usage on WSL

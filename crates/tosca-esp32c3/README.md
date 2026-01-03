@@ -6,7 +6,7 @@
 
 </div>
 
-A library crate for building firmware for `tosca` devices using an `ESP32-C3` 
+A library crate for building firmware for `tosca` devices using an `ESP32-C3`
 microcontroller.
 
 It provides APIs to:
@@ -64,7 +64,7 @@ cargo run --release
 > [!IMPORTANT]
 > Always use the release profile `[--release]` when building esp-hal.
   The dev profile can potentially be one or more orders of magnitude
-  slower than release profile, and may cause issues with timing-senstive
+  slower than release profile, and may cause issues with timing-sensitive
   peripherals and/or devices.
 
 <!-- Links -->

@@ -13,8 +13,6 @@ pub enum DeviceKind {
     Unknown,
     /// Light.
     Light,
-    /// Camera.
-    Camera,
 }
 
 impl DeviceKind {
@@ -22,7 +20,6 @@ impl DeviceKind {
         match self {
             Self::Unknown => "Unknown",
             Self::Light => "Light",
-            Self::Camera => "Camera",
         }
     }
 }
@@ -202,7 +199,7 @@ mod tests {
 
     #[test]
     fn test_device_kind() {
-        for device_kind in &[DeviceKind::Unknown, DeviceKind::Light, DeviceKind::Camera] {
+        for device_kind in &[DeviceKind::Unknown, DeviceKind::Light] {
             assert_eq!(
                 deserialize::<DeviceKind>(serialize(device_kind)),
                 *device_kind

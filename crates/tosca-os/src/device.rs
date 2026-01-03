@@ -13,7 +13,7 @@ const MAIN_ROUTE: &str = "/device";
 
 /// A generic `tosca` device.
 ///
-/// A [`Device`] can only be passed to a [`Server`].
+/// A [`Device`] can only be passed to a [`crate::server::Server`].
 #[derive(Debug)]
 pub struct Device<S = ()>
 where

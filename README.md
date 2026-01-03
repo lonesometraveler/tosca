@@ -38,18 +38,17 @@ feedback and suggestions during the initial stages of the project.
 
 ## Framework Structure
 
-The `tosca` framework revolves around a single interface, `tosca`, which
-connects two sides of the framework. The first is the _firmware side_,
+The framework revolves around a _single interface_, `tosca`, which
+connects two sides of the framework. The first is the _Firmware Side_,
 responsible for developing firmware and providing drivers for sensors, while the
-second is the _controller side_, responsible for interacting with the `tosca`
-devices.
+second is the _Controller Side_, responsible for interacting with the devices
+built using the `tosca` framework.
 
 ### `tosca`
 
 [tosca](https://github.com/ToscaLabs/tosca/tree/master/crates/tosca) is the main
 crate of the framework. It serves as an interface between a device and
 a controller.
-All other `tosca` crates must integrate this crate into their API definitions.
 
 It can:
 
@@ -81,7 +80,7 @@ serialization.
 To ensure compatibility with embedded devices, this library is `no_std`, linking
 to the `core` crate instead of the `std` crate.
 
-### Firmware side
+### Firmware Side
 
 The [tosca-os](https://github.com/ToscaLabs/tosca/tree/master/crates/tosca-os)
 and
@@ -105,7 +104,7 @@ and devices. All drivers are built on top of [`embedded-hal`] and
 [`embedded-hal-async`], ensuring compatibility across all supported
 hardware platforms.
 
-### Controller side
+### Controller Side
 
 The [tosca-controller](https://github.com/ToscaLabs/tosca/tree/master/crates/tosca-controller)
 library crate defines a set of APIs for managing, orchestrating, and interacting

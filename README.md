@@ -38,13 +38,13 @@ feedback and suggestions during the initial stages of the project.
 
 ## Framework Structure
 
-The framework revolves around a _single interface_, `tosca`, which
-connects two sides of the framework. The first is the _Firmware Side_,
-responsible for developing firmware and providing drivers for sensors, while the
-second is the _Controller Side_, responsible for interacting with the devices
-built using the `tosca` framework.
+The framework revolves around the `tosca` interface, which connects two sides
+of the framework. The first is the _Firmware Side_, responsible for developing
+firmware and providing drivers for sensors, while the second is the
+_Controller Side_, responsible for interacting with the devices built using
+the `tosca` framework.
 
-### `tosca`
+### `tosca` Interface
 
 [tosca](https://github.com/ToscaLabs/tosca/tree/master/crates/tosca) is the main
 crate of the framework. It serves as an interface between a device and

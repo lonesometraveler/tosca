@@ -38,48 +38,79 @@ feedback and suggestions during the initial stages of the project.
 
 ## Framework Structure
 
-The main crate is [tosca](./crates/tosca):
-a library that serves as the interface between a device and its controller.
+The `tosca` framework revolves around a single interface, `tosca`, which
+connects two sides of the framework. The first is the _firmware side_,
+responsible for developing firmware and providing drivers for sensors, while the
+second is the _controller side_, responsible for interacting with the `tosca`
+devices.
+
+### `tosca`
+
+`tosca` is the main crate of the framework. It serves as an interface
+between a device and a controller.
 All other `tosca` crates must integrate this crate into their API definitions.
 
 It can:
 
 - Create and manage **REST** routes to issue commands from a
-  controller to a device.
+  controller to a device. Each route can even define parameters that mirror
+  those used by a device in its operations. The responses to a route can include
+  a simple `Ok` indicating success on the device side, a `Serial`
+  response with additional data about the device operation, and an `Info`
+  response containing metadata and other details about the device. The `Stream`
+  response is optional and can be enabled via a feature, delivering chunks of
+  multimedia data as bytes.
 - Describe a device, including the structure of its firmware, its internal data
   and methods, as well as information about its resource consumption at the
   economic and energy levels.
 - Associate hazards with a route to describe the risks of a device
-  operation.
+  operation. A hazard is categorized into three types: _Safety_,
+  _Financial_, or _Privacy_. The _Safety_ category covers risks to human life,
+  the _Financial_ category addresses the economic impacts, and the _Privacy_
+  category relates to issues concerning data management.
 
-To ensure compatibility with embedded devices, this library is `no_std`, thus
-linking to the `core`-crate instead of the `std`-crate.
+It offers several features that reduce the final binary size and speed up
+compilation.
+The `stream` feature enables all data and methods necessary to identify a
+multimedia stream sent from a device to a controller.
+The `deserialize` feature enables data deserialization, which is generally
+useful for controllers but not for devices, as they typically handle only
+serialization.
+
+To ensure compatibility with embedded devices, this library is `no_std`, linking
+to the `core` crate instead of the `std` crate.
+
+### Firmware side
 
 The [tosca-os](./crates/tosca-os) and [tosca-esp32c3](./crates/tosca-esp32c3)
-are two Rust libraries crates for building firmware. They integrate the `tosca`
-library as a dependency in their APIs to share a common interface.
+crates are two libraries used for building firmware. As previously stated, they
+integrate the `tosca` library as a dependency in their APIs to maintain a
+common interface.
 
-The `tosca-os` library crate is designed for firmware that runs on operating
+The `tosca-os` library crate is designed for firmware running on operating
 systems.
-In the [tosca-os/examples](./crates/tosca-os/examples) directory, you can find
+In the [tosca-os/examples](./crates/tosca-os/examples) directory, you will find
 simple examples of [light](./crates/tosca-os/examples/light) and
 [ip-camera](./crates/tosca-os/examples/ip-camera) firmware.
 
-The `tosca-esp32c3` library crate is designed for firmware that runs on
+The `tosca-esp32c3` library crate is designed for firmware running on
 `ESP32-C3` microcontrollers.
 In the [tosca-esp32c3/examples](./crates/tosca-esp32c3/examples) directory,
-you can find several **light** firmware examples showcasing different features.
+you will find several **light** firmware examples demonstrating various
+features of this library.
 
 The [tosca-drivers](./crates/tosca-drivers) library crate provides
-architecture-agnostic drivers for a pool of sensors and devices.
+architecture-agnostic drivers for a range of sensors and devices.
 All drivers are built on top of [`embedded-hal`] and [`embedded-hal-async`],
 ensuring compatibility across all supported hardware platforms.
 
+### Controller side
+
 The [tosca-controller](./crates/tosca-controller) library crate defines
-a set of APIs to manage, orchestrate, and interact with firmware built using
-the crates mentioned above. In the
+a set of APIs for managing, orchestrating, and interacting with firmware built
+using the crates mentioned above. In the
 [tosca-controller/examples](./crates/tosca-controller/examples) directory,
-you can find some examples demonstrating various methods for receiving events
+you will find some examples demonstrating various methods for receiving events
 from devices.
 
 ## Building
@@ -104,9 +135,12 @@ repository:
 cargo build --release
 ```
 
-To build only a specific crate, navigate to its corresponding subdirectory
+To build a specific crate, navigate to its corresponding subdirectory
 within the [crates](./crates) directory and run the same build commands as
 described above.
+
+If a crate provides features that you want to disable, add the
+`--no-default-features` option to the commands above.
 
 > [!NOTE]
 > The `tosca-esp32c3` library crate is not part of the workspace and must be
@@ -127,6 +161,9 @@ This may take several minutes, depending on the tests defined in each crate.
 
 If only the tests for a specific crate need to be run, navigate to the
 corresponding crate subdirectory and execute the `cargo test` command.
+
+If a crate provides features that you want to disable, add the
+`--no-default-features` option to the commands above.
 
 ## License
 

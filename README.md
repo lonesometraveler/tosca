@@ -3,7 +3,7 @@
 # `tosca`
 
 [![Actions][actions badge]][actions]
-[![Crates.io Version [crates.io badge]][crates.io]
+[![Crates.io Version][crates.io badge]][crates.io]
 [![Minimum Supported Rust Version][msrv badge]][msrv]
 [![Codecov][codecov badge]][codecov]
 [![LICENSE][license badge]][license]

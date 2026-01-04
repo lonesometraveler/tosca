@@ -3,7 +3,7 @@
 # `tosca-esp32c3`
 
 [![LICENSE][license badge]][license]
-[![Crates.io Version [crates.io badge]][crates.io]
+[![Crates.io Version][crates.io badge]][crates.io]
 
 </div>
 

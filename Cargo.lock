@@ -1142,7 +1142,7 @@ dependencies = [
 
 [[package]]
 name = "tosca"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "hashbrown",
  "indexmap",
@@ -1153,7 +1153,7 @@ dependencies = [
 
 [[package]]
 name = "tosca-controller"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "bytes",
  "flume 0.12.0",
@@ -1176,7 +1176,7 @@ dependencies = [
 
 [[package]]
 name = "tosca-drivers"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "embedded-hal 1.0.0",
  "embedded-hal-async",
@@ -1186,7 +1186,7 @@ dependencies = [
 
 [[package]]
 name = "tosca-os"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "axum",
  "futures-core",

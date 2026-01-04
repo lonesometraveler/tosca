@@ -1,6 +1,6 @@
 [package]
 name = "tosca-esp32c3"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 authors = ["Michele Valsesia <michele.valsesia@toscalabs.org>"]
 description = "A library for building Tosca firmware that runs on ESP32-C3 boards."

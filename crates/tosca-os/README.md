@@ -2,8 +2,8 @@
 
 # `tosca-os`
 
-[![LICENSE][license badge]][license]
 [![Crates.io Version][crates.io badge]][crates.io]
+[![LICENSE][license badge]][license]
 
 </div>
 
@@ -89,9 +89,9 @@ where `firmware_device` is the name of the example to build, and `--release`
 is an optional argument that enables all time and memory optimizations.
 
 <!-- Links -->
-[license]: https://github.com/ToscaLabs/tosca?tab=readme-ov-file#license
 [crates.io]: https://crates.io/crates/tosca-os
+[license]: https://github.com/ToscaLabs/tosca?tab=readme-ov-file#license
 
 <!-- Badges -->
-[license badge]: https://img.shields.io/badge/license-Apache--2.0_OR_MIT-blue.svg
 [crates.io badge]: https://img.shields.io/crates/v/tosca-os.svg
+[license badge]: https://img.shields.io/badge/license-Apache--2.0_OR_MIT-blue.svg

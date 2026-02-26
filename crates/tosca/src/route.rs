@@ -12,7 +12,8 @@ use crate::hazards::{Hazard, Hazards};
 use crate::parameters::{Parameters, ParametersData};
 use crate::response::ResponseKind;
 
-use crate::macros::{mandatory_route, set};
+use crate::macros::set;
+use crate::mandatory_route;
 
 /// The kind of `REST` request.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize)]

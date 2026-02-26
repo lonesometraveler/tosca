@@ -238,7 +238,7 @@ mod tests {
     };
     use crate::{deserialize, serialize};
 
-    use super::{DeviceData, DeviceEnvironment, DeviceInfo, DeviceKind};
+    use super::{DeviceData, DeviceEnvironment, DeviceInfo, DeviceKind, DeviceKindId};
 
     fn energy() -> Energy {
         let energy_efficiencies =
@@ -306,7 +306,7 @@ mod tests {
     #[test]
     fn test_device_data() {
         let device_data = DeviceData::new(
-            DeviceKind::Light,
+            DeviceKindId::from(&DeviceKind::Light),
             DeviceEnvironment::Os,
             None,
             None,
